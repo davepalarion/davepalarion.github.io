@@ -3,7 +3,7 @@
 export const firebaseConfig = {
   apiKey: 'AIzaSyDFRWw4iFPnII70h9jbhY2P_QrWWXsDYLs',
   authDomain: 'davepalarion-portfolio.firebaseapp.com',
-  databaseURL: 'https://YOUR_DATABASE_URL',
+  databaseURL: 'https://davepalarion-portfolio-default-rtdb.asia-southeast1.firebasedatabase.app/',
   projectId: 'davepalarion-portfolio',
   appId: '1:70159794218:web:7569a49e12d2cc1ac74353'
 };
