@@ -49,7 +49,7 @@ nav a{transition:color .2s}nav a.active{color:#73c1ff}nav a.active::after{conten
 html[data-theme="light"]{color-scheme:light;--bg:#f4f8ff;--panel:#fff;--ink:#172c47;--muted:#52657f;--accent:#1264bf;--header-bg:#f4f8fff0;--line:#d7e2f0;--tag-bg:#e2efff;--tag-text:#1d5797;--link:#155fa9}
 html[data-theme="light"] body{background:radial-gradient(circle at 85% 0%,#d9eaff,transparent 36%),var(--bg)}
 header{background:var(--header-bg);border-bottom-color:var(--line)}.card{border-color:var(--line)}.tag{background:var(--tag-bg);color:var(--tag-text)}.contact a{color:var(--link)}footer{border-top-color:var(--line)}
-html[data-theme="light"] .visit-stat{background:#e7f1ff;border-color:#c4d9f4}html[data-theme="light"] .visit-stat strong{color:#125ba8}html[data-theme="light"] #constellation{opacity:.27}
+html[data-theme="light"] .visit-stat{background:#e7f1ff;border-color:#c4d9f4}html[data-theme="light"] .visit-stat strong{color:#125ba8}html[data-theme="light"] #constellation{opacity:.8}
 .nav-controls{display:flex;align-items:center;gap:12px}.theme-toggle{border:1px solid #7489a5;background:var(--panel);color:var(--ink);border-radius:999px;padding:8px 12px;cursor:pointer;font:600 13px system-ui;white-space:nowrap}.theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 @media(max-width:750px){.nav{flex-direction:row;align-items:center;flex-wrap:wrap;padding:12px 0;gap:10px}.nav-controls{margin-left:auto}.nav nav{order:3;width:100%;justify-content:center;gap:clamp(10px,3vw,22px);font-size:.85rem}.hero{padding:48px 0 58px;gap:22px}.section{padding:30px 0 45px}.wrap{padding-left:18px;padding-right:18px}}
 @media(max-width:400px){.brand{font-size:1rem}.theme-toggle{font-size:12px;padding:7px 9px}.nav nav{font-size:.78rem;gap:10px}h1{font-size:clamp(2rem,10vw,3rem)}.actions .btn{width:100%;text-align:center}}
@@ -108,6 +108,7 @@ html[data-theme="light"] .visit-stat{background:#e7f1ff;border-color:#c4d9f4}htm
   // Lightweight constellation: stars connect to nearby stars and follow the pointer.
   const canvas = document.getElementById('constellation');
   const ctx = canvas.getContext('2d', {alpha:true});
+  const lightTheme = () => document.documentElement.dataset.theme === 'light';
   if (ctx && !reduceMotion) {
     const pointer = {x:-1000,y:-1000,active:false};
     const coarse = window.matchMedia('(pointer:coarse)').matches;
@@ -145,22 +146,22 @@ html[data-theme="light"] .visit-stat{background:#e7f1ff;border-color:#c4d9f4}htm
         for(let j=i+1;j<stars.length;j++){
           const b=stars[j],dist=Math.hypot(a.x-b.x,a.y-b.y);
           if(dist<linkDist){
-            ctx.strokeStyle=`rgba(86,175,255,${(1-dist/linkDist)*.20})`;
+            ctx.strokeStyle=lightTheme()?`rgba(18,39,69,${(1-dist/linkDist)*.32})`:`rgba(86,175,255,${(1-dist/linkDist)*.20})`;
             ctx.lineWidth=.8;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
           }
         }
         if(pointer.active){
           const dist=Math.hypot(a.x-pointer.x,a.y-pointer.y);
           if(dist<185){
-            ctx.strokeStyle=`rgba(116,209,255,${(1-dist/185)*.65})`;
+            ctx.strokeStyle=lightTheme()?`rgba(12,37,69,${(1-dist/185)*.75})`:`rgba(116,209,255,${(1-dist/185)*.65})`;
             ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(pointer.x,pointer.y);ctx.stroke();
           }
         }
-        ctx.fillStyle='rgba(155,216,255,.75)';ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle=lightTheme()?'rgba(22,43,75,.86)':'rgba(155,216,255,.75)';ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
       }
       if(pointer.active){
         const glow=ctx.createRadialGradient(pointer.x,pointer.y,0,pointer.x,pointer.y,95);
-        glow.addColorStop(0,'rgba(73,165,255,.12)');glow.addColorStop(1,'rgba(73,165,255,0)');
+        glow.addColorStop(0,lightTheme()?'rgba(23,53,90,.10)':'rgba(73,165,255,.12)');glow.addColorStop(1,'rgba(73,165,255,0)');
         ctx.fillStyle=glow;ctx.beginPath();ctx.arc(pointer.x,pointer.y,95,0,Math.PI*2);ctx.fill();
       }
     }
