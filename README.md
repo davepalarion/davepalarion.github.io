@@ -43,3 +43,9 @@ On desktop, hovering or keyboard-focusing a navigation link moves the glass high
 Navigation update: removed the iOS glass hover highlight and sliding pill. Links now use a simple animated underline, with the responsive mobile menu retained.
 
 Profile glow: light mode uses a stronger muted royal-blue halo to complement the pale blue background; dark mode uses cyan-blue. Reduced-motion settings are respected.
+
+## Photo Gallery
+The Gallery section includes your existing profile.jpg and two placeholders. To add photos, upload images (for example photo2.jpg) beside index.html, then replace a gallery-placeholder div in index.html with: <button class="gallery-photo" type="button" data-full="photo2.jpg" data-caption="My Photo"><img src="photo2.jpg" alt="My Photo" loading="lazy"><span>My Photo</span></button>. The lightbox automatically supports the new photo. Do not upload private photos you do not want publicly visible.
+
+## Modern animated gallery
+The gallery now features elevated photo cards, smooth zoom and reveal animations, responsive layout, and an animated full-screen viewer with swipe support on touchscreens. Add more photos by copying an existing `.gallery-photo` button in `index.html` and updating its `src`, `data-full`, and caption. Reduced-motion settings are respected.
