@@ -61,6 +61,29 @@ header .nav {background:transparent;border:0;box-shadow:none;border-radius:0;bac
 /* Cursor-following animated navigation highlight */
 @media(max-width:750px){.nav nav {background:var(--panel);border:1px solid var(--border-color);border-radius:14px;padding:8px}.nav nav a{border-radius:8px}.nav nav a::after{display:none!important}.nav nav a:hover,.nav nav a:focus-visible{background:var(--tag-bg)}}
 @media(prefers-reduced-motion:reduce){.nav nav a,.nav nav a::after{transition:none!important}}
+
+/* Soft animated glow around the profile picture, matching each theme. */
+.hero .avatar {
+  position: relative;
+  isolation: isolate;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 5px color-mix(in srgb,var(--accent) 13%,transparent),
+              0 0 25px color-mix(in srgb,var(--accent) 48%,transparent),
+              0 0 65px color-mix(in srgb,var(--accent) 27%,transparent);
+  animation: photoFloat 6s ease-in-out infinite, photoGlow 3.4s ease-in-out infinite;
+  transition: box-shadow .35s ease, border-color .35s ease, filter .35s ease;
+}
+.hero .avatar:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 0 0 7px color-mix(in srgb,var(--accent) 18%,transparent),
+              0 0 40px color-mix(in srgb,var(--accent) 65%,transparent),
+              0 0 85px color-mix(in srgb,var(--accent) 40%,transparent);
+}
+@keyframes photoGlow {
+  0%,100% { box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 10%,transparent),0 0 22px color-mix(in srgb,var(--accent) 36%,transparent),0 0 55px color-mix(in srgb,var(--accent) 20%,transparent); }
+  50% { box-shadow:0 0 0 8px color-mix(in srgb,var(--accent) 20%,transparent),0 0 38px color-mix(in srgb,var(--accent) 62%,transparent),0 0 85px color-mix(in srgb,var(--accent) 35%,transparent); }
+}
+@media (prefers-reduced-motion:reduce){.hero .avatar{animation:none}}
 </style><style>
 .visit-stats{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin:26px auto;max-width:620px}.visit-stat{background:rgba(15,35,64,.8);border:1px solid rgba(112,187,255,.26);border-radius:16px;padding:17px 25px;min-width:170px;text-align:center;box-shadow:0 8px 28px #0002}.visit-stat strong{display:block;color:#9bd8ff;font-size:clamp(25px,4vw,35px);font-variant-numeric:tabular-nums}.visit-stat span{display:block;font-size:13px;color:#c2d4eb;margin-top:3px}.online-dot{display:inline-block;width:8px;height:8px;background:#39e0a1;border-radius:50%;box-shadow:0 0 10px #39e0a1;margin-right:7px}.visit-note{text-align:center;color:#91a9c5;font-size:12px;margin:-14px auto 24px}
 
