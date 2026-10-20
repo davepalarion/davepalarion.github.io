@@ -19,3 +19,27 @@ This GitHub Pages website includes a live **Visitors online now** count and **To
 - **Online visitors:** counts Firebase anonymous-authenticated connected sessions, updated in real time via Realtime Database presence. Disconnects may take a short time to register. Multiple tabs sharing the same anonymous identity may count as one online visitor.
 - **Important:** Client-side counters can be inflated by automated traffic or malicious users; this is suitable for a personal portfolio, not trusted analytics. Firebase may charge if free usage limits are exceeded.
 - Before Firebase is configured, counters show a dash and a setup note rather than invented data.
+
+Visitor counters are displayed in the upper-right of the website header. Firebase setup is still required for live values.
+
+## Mobile view and light/dark theme
+The layout adapts automatically to phone screens. Use the theme button in the navigation bar to switch between light and dark mode. It remembers the selection on the same browser, and initially follows device preference. Firebase counters remain in the footer and require configuration.
+
+## Constellation colors
+In light mode the constellation uses dark navy stars and lines; in dark mode it keeps the original blue glow. The change updates instantly with the theme toggle.
+
+## Coordinated theme palette
+Buttons, cards, navigation, tags, footer counters and animated accents now use consistent dark/light CSS variables. Light mode has navy constellation lines; dark mode has luminous blue lines.
+
+## iOS-inspired glass navigation
+The navigation now uses frosted glass blur, translucent panels, a sliding active-link indicator, hover animations, and a stronger floating shadow while scrolling. It supports both themes, phones, and reduced-motion preferences.
+
+## Modern animated navigation
+The glass navigation has an entrance animation, a soft sweeping highlight, a sliding active-section indicator on desktop, and an animated hamburger menu on phones. It supports keyboard navigation and reduced-motion settings.
+
+## Navigation hover animation
+On desktop, hovering or keyboard-focusing a navigation link moves the glass highlight pill smoothly under that link. The selected section is restored when the pointer leaves. Mobile navigation uses a simple touch highlight. Reduced-motion settings are respected.
+
+Navigation update: removed the iOS glass hover highlight and sliding pill. Links now use a simple animated underline, with the responsive mobile menu retained.
+
+Profile glow: light mode uses a stronger muted royal-blue halo to complement the pale blue background; dark mode uses cyan-blue. Reduced-motion settings are respected.
